@@ -51,24 +51,24 @@ overrides: !ruby/object:Overrides::ResourceOverrides
     custom_code: !ruby/object:Provider::Terraform::CustomCode
       custom_import: templates/terraform/custom_import/apigee_organization.go.erb
       encoder: templates/terraform/encoders/apigee_organization.go.erb
-############## Apigee Instance
-
   Instance: !ruby/object:Overrides::Terraform::ResourceOverride
     autogen_async: true
     examples:
     - !ruby/object:Provider::Terraform::Examples
-      name: "apigee_organization_instance_cloud"
+      name: "apigee_instance_cloud"
       skip_test: true
     - !ruby/object:Provider::Terraform::Examples
       # This is a more verbose version of the above that creates all
       # the resources needed for the acceptance test.
-      name: "apigee_organization_instance_cloud_test"
+      name: "apigee_instance_cloud_test"
       primary_resource_id: "org"
       test_env_vars:
         org_id: :ORG_ID
         billing_account: :BILLING_ACCT
       skip_docs: true
-
+    timeouts: !ruby/object:Api::Timeouts
+      insert_minutes: 30
+      delete_minutes: 30
     #custom_code: !ruby/object:Provider::Terraform::CustomCode
      # custom_import: templates/terraform/custom_import/apigee_organization_instance.go.erb
      # encoder: templates/terraform/encoders/apigee_organization_instance.go.erb

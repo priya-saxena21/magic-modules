@@ -41,10 +41,10 @@ resource "google_kms_crypto_key" "apigee_instance_key" {
   }
 }
 
-resource "google_apigee_organization_instance" "ins" {
-  name		     	= "instance_1"
-  location	     	= "us-central1"
-  description	     	= "Apigee runtime instance"
-  display_name	     	= "instance_1"
+resource "google_apigee_organization_instance" "<%= ctx[:primary_resource_id] %>" {
+  name		     	           = "tf-test%{random_suffix}"
+  location	               = "us-central1"
+  description	             = "Apigee runtime instance"
+  display_name             = "instance_1"
   disk_encryption_key_name = google_kms_key.apigee_instance_key.id
 }
